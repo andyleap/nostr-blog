@@ -1,0 +1,28 @@
+<html color-mode="user">
+    <head>
+        <title>Blog</title>
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+        <style>
+            aside.note {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <header><h1>{{ .user.name }}'s thoughts</h1>
+        <h3>{{ .user.about }}</h3></header>
+        <main>
+            <section>
+                {{ range .posts }}
+                <aside class="note">
+                    <small>{{ (parseTime .CreatedAt).Format "Mon, 02 Jan 2006 15:04:05 MST"}}</small>
+                    <p>{{ .Content }}</p>
+                </aside>
+                {{ end }}
+            </section>
+        </main>
+        <footer>
+            <small>A microblog powered by nostr</small>
+        </footer>
+    </body>
+</html>
